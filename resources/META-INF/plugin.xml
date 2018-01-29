@@ -1,0 +1,58 @@
+<idea-plugin>
+    <id>com.sperasoft.megasuite</id>
+    <name>Megasuite Generator Console</name>
+    <version>1.0</version>
+    <vendor email="alexander.shakhov@sperasoft.com" url="https://www.sperasoft.com">Sperasoft</vendor>
+
+    <description><![CDATA[
+      SNEI project plugin to generate Megasuite from TestNG template suite.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      version 1.0<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Megasuite Console"
+                    canCloseContents="true"
+                    anchor="bottom"
+                    icon="/icons/interest.png"
+                    factoryClass="com.sperasoft.megasuite.views.MegasuiteToolWindowFactory"
+                    secondary="false"/>
+
+    </extensions>
+
+    <actions>
+        <!-- Action to run megasuite task -->
+        <action id="Megasuite_Console_Show"
+                class="com.sperasoft.megasuite.actions.MegasuiteGenerateAction"
+                icon="/icons/interest.png"
+                text="Generate Megasuite"
+                description="Show Megasuite Console">
+            <add-to-group group-id="ProjectViewPopupMenu" />
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
+
+    <!-- Megasuite Console embedded in ToolWindow -->
+    <project-components>
+        <component>
+            <interface-class>com.sperasoft.megasuite.views.MegasuiteConsole</interface-class>
+            <implementation-class>com.sperasoft.megasuite.views.MegasuiteConsole</implementation-class>
+        </component>
+    </project-components>
+
+</idea-plugin>
